@@ -1,0 +1,23 @@
+#Comandos usados
+
+db.createCollection("users");
+db.users.insertOne({
+  _id: ObjectId(), // MongoDB generará automáticamente un _id único si lo dejas vacío
+  nombre: "Ana",
+  apellido: "Garcia",
+  edad: 30,
+  email: "ana@example.com",
+  direccion: {
+    calle: "Calle Ejemplo 456",
+    ciudad: "Ciudad Ejemplo",
+    codigo_postal: "67890"
+  }
+});
+db.users.find({ nombre: "Ana" });
+db.users.find({ nombre: "Ana" }).pretty();
+db.users.updateOne(
+  { nombre: "Ana" }, 
+  { $set: { edad: 25 } } 
+);
+
+db.users.deleteOne({ nombre: "Ana" });
